@@ -1,0 +1,52 @@
+diff -dur premake-3.7.orig.orig/Src/Makefile premake-3.7.orig/Src/Makefile
+--- premake-3.7.orig.orig/Src/Makefile	2008-09-21 14:11:41.000000000 +0200
++++ premake-3.7.orig/Src/Makefile	2019-03-11 19:18:27.414616613 +0100
+@@ -29,9 +29,9 @@
+   OBJDIR := obj/Release
+   OUTDIR := ../bin
+   CPPFLAGS := $(DEPFLAGS) -D "_CRT_SECURE_NO_DEPRECATE" -D "USE_POPEN=1"
+-  CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -Os -Wall
++  CFLAGS += $(CPPFLAGS) $(shell pkg-config --cflags lua51) $(TARGET_ARCH) -Os -Wall
+   CXXFLAGS += $(CFLAGS)
+-  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -s -lm
++  LDFLAGS += -L$(BINDIR) -L$(LIBDIR) $(shell pkg-config --libs lua51) -s -lm
+   LDDEPS :=
+   RESFLAGS := -D "_CRT_SECURE_NO_DEPRECATE" -D "USE_POPEN=1"
+   TARGET := premake
+@@ -71,36 +71,6 @@
+ 	$(OBJDIR)/script.o \
+ 	$(OBJDIR)/vs2005.o \
+ 	$(OBJDIR)/codelite.o \
+-	$(OBJDIR)/lapi.o \
+-	$(OBJDIR)/lstate.o \
+-	$(OBJDIR)/lvm.o \
+-	$(OBJDIR)/liolib.o \
+-	$(OBJDIR)/ldblib.o \
+-	$(OBJDIR)/ltablib.o \
+-	$(OBJDIR)/lstring.o \
+-	$(OBJDIR)/ldebug.o \
+-	$(OBJDIR)/lstrlib.o \
+-	$(OBJDIR)/lfunc.o \
+-	$(OBJDIR)/lauxlib.o \
+-	$(OBJDIR)/lgc.o \
+-	$(OBJDIR)/ldo.o \
+-	$(OBJDIR)/ltests.o \
+-	$(OBJDIR)/ltm.o \
+-	$(OBJDIR)/lundump.o \
+-	$(OBJDIR)/ldump.o \
+-	$(OBJDIR)/lmem.o \
+-	$(OBJDIR)/lbaselib.o \
+-	$(OBJDIR)/loadlib.o \
+-	$(OBJDIR)/ltable.o \
+-	$(OBJDIR)/lparser.o \
+-	$(OBJDIR)/lzio.o \
+-	$(OBJDIR)/llex.o \
+-	$(OBJDIR)/loslib.o \
+-	$(OBJDIR)/lcode.o \
+-	$(OBJDIR)/lopcodes.o \
+-	$(OBJDIR)/lmathlib.o \
+-	$(OBJDIR)/lobject.o \
+-	$(OBJDIR)/linit.o \
+ 	$(OBJDIR)/ow.o \
+ 
+ MKDIR_TYPE := msdos

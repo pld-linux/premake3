@@ -1,0 +1,12 @@
+diff -dur premake-3.7.orig.orig/Src/Makefile premake-3.7.orig/Src/Makefile
+--- premake-3.7.orig.orig/Src/Makefile	2019-03-11 19:20:03.326684224 +0100
++++ premake-3.7.orig/Src/Makefile	2019-03-11 19:20:27.591955826 +0100
+@@ -14,7 +14,7 @@
+   OBJDIR := obj/Debug
+   OUTDIR := ../bin
+   CPPFLAGS := $(DEPFLAGS) -D "_CRT_SECURE_NO_DEPRECATE" -D "USE_POPEN=1"
+-  CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -Wall
++  CFLAGS += $(CPPFLAGS) $(OPTFLAGS)
+   CXXFLAGS += $(CFLAGS)
+   LDFLAGS += -L$(BINDIR) -L$(LIBDIR) -lm
+   LDDEPS :=
