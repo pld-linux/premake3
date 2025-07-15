@@ -40,8 +40,8 @@ pliki projektów dla:
 
 %prep
 %setup -q -n premake-%{version}.orig
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 sed -i -e's/@\$(CC/$(CC/g;s/@\$(BLD/$(BLD/' Src/Makefile
 
